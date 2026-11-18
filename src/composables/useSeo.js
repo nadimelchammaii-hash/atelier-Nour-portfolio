@@ -7,7 +7,7 @@ import { siteImages } from '~/data/projects'
 export function useSeo({ title, description, image, type = 'website' } = {}) {
   const { t, locale } = useI18n()
   const route = useRoute()
-  const { siteUrl } = useRuntimeConfig().public
+  const siteUrl = useRuntimeConfig().public.canonicalBase
 
   const resolve = (v) => (typeof v === 'function' ? v() : unref(v))
 

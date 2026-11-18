@@ -31,11 +31,11 @@ Pages, routes (`/projects/<slug>` and `/ar/projects/<slug>`), filters, the sitem
 - **Images** are hot-linked from Unsplash's CDN with responsive `srcset`, `auto=format` (AVIF/WebP) and fixed aspect ratios. All are credited on `/credits`.
 - **Motion** respects `prefers-reduced-motion`; above-the-fold text animates with CSS only so it never delays the first paint.
 - **Fonts** load from Google Fonts without blocking rendering; the Arabic family is only requested on Arabic pages.
-- Set `NUXT_PUBLIC_SITE_URL` to the production URL (used for canonical URLs, hreflang, Open Graph, sitemap).
+- The production URL (canonical URLs, hreflang, Open Graph, sitemap) defaults to `https://ateliernourhaddad.vercel.app`. For another domain, set the environment variable `SITE_URL`.
 
 ## Deploying to Vercel
 
-Import the repository in Vercel (framework preset: Nuxt). `vercel.json` already sets the build command (`npm run generate`), the output directory (`.output/public`) and long-term caching for hashed assets. Add the environment variable `NUXT_PUBLIC_SITE_URL` (e.g. `https://your-domain.com`) and redeploy.
+Import the repository in Vercel (framework preset: Nuxt). `vercel.json` already sets the build command (`npm run generate`), the output directory (`.output/public`) and long-term caching for hashed assets. If you move to a custom domain, add the environment variable `SITE_URL` (e.g. `https://your-domain.com`) and redeploy.
 
 ## Lighthouse (mobile, simulated throttling, local gzip server)
 

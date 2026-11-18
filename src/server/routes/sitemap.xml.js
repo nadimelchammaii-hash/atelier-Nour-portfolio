@@ -3,7 +3,7 @@
 import { projects } from '~/data/projects'
 
 export default defineEventHandler((event) => {
-  const base = (useRuntimeConfig().public.siteUrl || '').replace(/\/$/, '')
+  const base = (useRuntimeConfig().public.canonicalBase || '').replace(/\/$/, '')
   const paths = ['/', '/projects', '/about', '/contact', '/credits', ...projects.map((p) => `/projects/${p.slug}`)]
   const loc = (lang, path) => base + (lang === 'ar' ? (path === '/' ? '/ar' : `/ar${path}`) : path)
 

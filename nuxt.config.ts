@@ -1,13 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-// Public site URL (canonical, hreflang, Open Graph, sitemap). Priority:
-// 1. NUXT_PUBLIC_SITE_URL (set it in Vercel for a custom domain)
-// 2. VERCEL_PROJECT_PRODUCTION_URL — Vercel's system variable for the production domain
-// 3. the current live domain
-const SITE_URL = (
-  process.env.NUXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) ||
-  'https://ateliernourhaddad.vercel.app'
-).replace(/\/$/, '')
+// Public site URL (canonical, hreflang, Open Graph, sitemap).
+// For a custom domain, set the environment variable SITE_URL (e.g. https://ateliernour.com) and redeploy.
+// Note: the runtime key is deliberately NOT named `siteUrl`, so a stray NUXT_PUBLIC_SITE_URL
+// variable in the hosting dashboard can never override it.
+const SITE_URL = (process.env.SITE_URL || 'https://ateliernourhaddad.vercel.app').replace(/\/$/, '')
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-01',
@@ -25,7 +21,7 @@ export default defineNuxtConfig({
   components: [{ path: '~/components', pathPrefix: false }],
 
   runtimeConfig: {
-    public: { siteUrl: SITE_URL },
+    public: { canonicalBase: SITE_URL },
   },
 
   app: {
