@@ -1,10 +1,38 @@
+<script>
+// One shared observer for every lazy image on the page
+let observer = null
+const callbacks = new WeakMap()
+function observe(el, cb) {
+  if (!('IntersectionObserver' in window)) return cb()
+  observer ||= new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue
+        observer.unobserve(e.target)
+        callbacks.get(e.target)?.()
+        callbacks.delete(e.target)
+      }
+    },
+    { rootMargin: '100% 0px' }, // start loading one viewport height before it scrolls into view
+  )
+  callbacks.set(el, cb)
+  observer.observe(el)
+}
+function unobserve(el) {
+  observer?.unobserve(el)
+  callbacks.delete(el)
+}
+</script>
+
 <script setup>
 /**
  * Optimised Unsplash image.
  * - Fixed aspect-ratio box → zero layout shift
  * - Solid dominant-colour placeholder, image fades in once decoded
  * - Responsive srcset/sizes via @nuxt/image (Unsplash provider, WebP)
- * - Lazy by default; pass `eager` for the LCP/hero image only
+ * - Lazy by default (own IntersectionObserver, ~1 screen ahead — Chrome's native lazy threshold is
+ *   so large on mobile that below-the-fold images competed with the LCP image for bandwidth).
+ *   Pass `eager` for the LCP/hero image only.
  * - `reveal` adds the clip-path wipe on scroll (see plugins/motion.client.js)
  */
 const props = defineProps({
@@ -44,22 +72,30 @@ const fullSizes = computed(() => {
 })
 
 const loaded = ref(props.eager)
+const near = ref(props.eager) // render the <img> only once it is close to the viewport
 const imgRef = ref(null)
+const box = ref(null)
 
 onMounted(() => {
+  if (!near.value) observe(box.value, () => (near.value = true))
   const el = imgRef.value?.$el
   if (el?.complete && el.naturalWidth) loaded.value = true
 })
+onBeforeUnmount(() => box.value && unobserve(box.value))
 </script>
 
 <template>
   <div
+    ref="box"
     class="relative overflow-hidden"
+    :role="near || !alt ? undefined : 'img'"
+    :aria-label="near || !alt ? undefined : alt"
     :style="{ aspectRatio: `${rw} / ${rh}`, backgroundColor: color }"
     :data-reveal-img="reveal ? '' : undefined"
     :data-reveal-delay="reveal && revealDelay ? revealDelay : undefined"
   >
     <NuxtImg
+      v-if="near"
       ref="imgRef"
       provider="unsplash"
       :src="src"
@@ -69,7 +105,7 @@ onMounted(() => {
       :sizes="fullSizes"
       fit="cover"
       :modifiers="{ auto: 'format' }"
-      :loading="eager ? 'eager' : 'lazy'"
+      :loading="eager ? 'eager' : undefined"
       :fetchpriority="eager ? 'high' : 'auto'"
       :preload="eager ? { fetchPriority: 'high' } : false"
       decoding="async"

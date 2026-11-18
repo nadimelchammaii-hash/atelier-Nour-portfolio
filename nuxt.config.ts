@@ -1,5 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const SITE_URL = process.env.NUXT_PUBLIC_SITE_URL || 'https://atelier-nour.vercel.app'
+// Public site URL (canonical, hreflang, Open Graph, sitemap). Priority:
+// 1. NUXT_PUBLIC_SITE_URL (set it in Vercel for a custom domain)
+// 2. VERCEL_PROJECT_PRODUCTION_URL — Vercel's system variable for the production domain
+// 3. the current live domain
+const SITE_URL = (
+  process.env.NUXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) ||
+  'https://ateliernourhaddad.vercel.app'
+).replace(/\/$/, '')
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-01',
