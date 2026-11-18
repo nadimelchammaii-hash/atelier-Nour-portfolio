@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  :root {
+    --gutter: 1.25rem;
+    --header-h: 4.5rem;
+    color-scheme: light;
+  }
+  @media (min-width: 768px) {
+    :root { --gutter: 2rem; --header-h: 5.5rem; }
+  }
+  @media (min-width: 1280px) {
+    :root { --gutter: 3rem; }
+  }
+
+  html {
+    @apply bg-paper text-ink antialiased;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply font-sans font-light text-[15px] leading-relaxed md:text-base;
+    min-height: 100svh;
+  }
+
+  /* Arabic: one family for everything, slightly larger for legibility */
+  html[lang='ar'] body { @apply font-arabic font-light text-[16px] md:text-[17px]; line-height: 1.85; }
+  html[lang='ar'] .font-display { @apply font-arabic font-extralight; letter-spacing: 0; line-height: 1.25; }
+  html[lang='ar'] .eyebrow { letter-spacing: 0; @apply text-xs; }
+
+  /* Cormorant defaults to old-style figures ("01" reads as "OI") */
+  .font-display { font-variant-numeric: lining-nums; }
+
+  ::selection { @apply bg-clay text-paper; }
+
+  :focus-visible { @apply outline outline-1 outline-offset-4 outline-ink; }
+
+  img { @apply select-none; }
+
+  /* Lenis */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-stopped { overflow: hidden; }
+}
+
+/* ============================================================
+   Components
+   ============================================================ */
+@layer components {
+  .container-site { @apply mx-auto w-full max-w-site px-gutter; }
+
+  /* 12-col on desktop, 6-col on tablet, 4-col on mobile */
+  .grid-site { @apply grid grid-cols-4 gap-x-4 md:grid-cols-6 md:gap-x-6 lg:grid-cols-12 lg:gap-x-8; }
+
+  .eyebrow { @apply font-sans text-eyebrow font-normal uppercase text-stone; }
+
+  .hairline { @apply border-t border-stone-line; }
+
+  .link-underline {
+    @apply relative inline-block;
+    background: linear-gradient(currentColor, currentColor) no-repeat 100% 100% / 0 1px;
+    transition: background-size 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-underline:hover, .link-underline.router-link-exact-active { background-position: 0 100%; background-size: 100% 1px; }
+  [dir='rtl'] .link-underline { background-position: 0 100%; }
+  [dir='rtl'] .link-underline:hover, [dir='rtl'] .link-underline.router-link-exact-active { background-position: 100% 100%; }
+
+  .tag { @apply inline-flex items-center border border-stone-line px-2 py-1 text-[11px] uppercase tracking-wider text-ink-soft; }
+  html[lang='ar'] .tag { @apply tracking-normal text-xs; }
+}
+
+/* ============================================================
+   Motion
+   ============================================================ */
+/* Elements hidden before GSAP reveals them. Only applied when JS + motion are on
+   (class `.motion` is added to <html> by the motion plugin), so content stays
+   visible without JS and for reduced-motion users. */
+.motion [data-reveal] { opacity: 0; transform: translate3d(0, 28px, 0); }
+.motion [data-reveal-img] { clip-path: inset(100% 0 0 0); }
+
+/* Above-the-fold entrances: pure CSS so they start on first paint and never wait for JS.
+   Text starts partly visible (never opacity 0), so it counts as painted immediately (good LCP). */
+.motion [data-intro] { animation: intro 1.2s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 0.05s; }
+.motion [data-intro='1'] { animation-delay: 0.12s; }
+.motion [data-intro='2'] { animation-delay: 0.2s; }
+.motion [data-intro='3'] { animation-delay: 0.26s; }
+.motion [data-intro='4'] { animation-delay: 0.34s; }
+@keyframes intro {
+  from { opacity: 0.25; transform: translate3d(0, 0.6em, 0); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Route transitions */
+.page-enter-active, .page-leave-active { transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.page-enter-from { opacity: 0; transform: translate3d(0, 16px, 0); }
+.page-leave-to { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .page-enter-from { transform: none; }
+}

@@ -1,0 +1,175 @@
+{
+  "site": {
+    "name": "Atelier Nour",
+    "tagline": "Architecture & Interiors",
+    "description": "Atelier Nour is a fictional architecture and interiors studio — a demo portfolio showcasing calm, light-led spaces.",
+    "demoNotice": "Demo portfolio — Atelier Nour is a fictional studio."
+  },
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "credits": "Credits",
+    "menu": "Menu",
+    "close": "Close",
+    "main": "Main navigation",
+    "skip": "Skip to content"
+  },
+  "lang": {
+    "switch": "Switch language",
+    "short": "AR",
+    "target": "العربية"
+  },
+  "footer": {
+    "studio": "Studio",
+    "follow": "Follow",
+    "enquiries": "Enquiries",
+    "address": "Rue Gouraud 12, Beirut",
+    "rights": "All rights reserved.",
+    "photos": "Photography via Unsplash",
+    "backToTop": "Back to top"
+  },
+  "common": {
+    "viewAll": "View all projects",
+    "viewProject": "View project",
+    "readMore": "Read more",
+    "getInTouch": "Get in touch",
+    "scroll": "Scroll"
+  },
+  "categories": {
+    "all": "All",
+    "exterior": "Exterior",
+    "interior": "Interior",
+    "landscape": "Landscape"
+  },
+  "home": {
+    "philosophy": "We design calm spaces shaped by light, proportion and honest materials.",
+    "featuredEyebrow": "Selected work",
+    "featuredTitle": "Houses, interiors and gardens that grow quieter with time.",
+    "aboutEyebrow": "The studio",
+    "aboutTitle": "A small studio in Beirut, working across the Mediterranean.",
+    "aboutText": "Founded in 2012 by architect Nour Haddad, the atelier works on a limited number of projects each year — from mountain houses and city apartments to gardens on the coast. Every project starts with the site: its light, its views and the way people will move through it.",
+    "aboutLink": "About the studio",
+    "stats": {
+      "years": "Years of practice",
+      "projects": "Completed projects",
+      "awards": "Regional awards"
+    },
+    "ctaEyebrow": "New projects",
+    "ctaTitle": "Have a site, a house or a room in mind?",
+    "ctaText": "We take on a small number of commissions each year. Tell us about yours."
+  },
+  "projects": {
+    "title": "Projects",
+    "intro": "A selection of residential, interior and landscape work across Lebanon and the Mediterranean.",
+    "filterLabel": "Filter projects by category",
+    "count": "no projects | 1 project | {n} projects",
+    "empty": "No projects in this category yet."
+  },
+  "project": {
+    "location": "Location",
+    "year": "Year",
+    "area": "Area",
+    "category": "Category",
+    "areaUnit": "m²",
+    "overview": "Overview",
+    "gallery": "Gallery",
+    "prev": "Previous project",
+    "next": "Next project",
+    "back": "All projects",
+    "openImage": "Open image {n} of {total} in fullscreen",
+    "imageAlt": "{title} — view {n}"
+  },
+  "lightbox": {
+    "label": "Image viewer",
+    "close": "Close viewer",
+    "prev": "Previous image",
+    "next": "Next image",
+    "counter": "{n} / {total}"
+  },
+  "about": {
+    "title": "About",
+    "eyebrow": "Atelier Nour",
+    "lead": "Architecture is the art of arranging light. We design buildings, interiors and landscapes that feel inevitable — as if they had always belonged to their place.",
+    "bioEyebrow": "Founder",
+    "bioName": "Nour Haddad",
+    "bioRole": "Principal architect (fictional)",
+    "bio": [
+      "Nour Haddad studied architecture in Beirut and Barcelona before spending eight years in practices in Lisbon and Paris, working on housing, cultural buildings and the restoration of historic homes.",
+      "She founded Atelier Nour in 2012 with a simple ambition: to design fewer projects, more carefully. Today the studio is a team of six architects and designers working across Lebanon, Cyprus and the Gulf."
+    ],
+    "philosophyEyebrow": "Philosophy",
+    "philosophyTitle": "Three ideas guide every project.",
+    "principles": [
+      { "title": "Light first", "text": "We study how the sun moves across a site before drawing a single wall. Openings, depths and materials are tuned to the light of each hour and season." },
+      { "title": "Honest materials", "text": "Stone, lime, timber and clay — local where possible, used plainly and chosen to age gracefully rather than stay new." },
+      { "title": "Quiet proportion", "text": "Calm comes from proportion, not decoration. We work with simple volumes, generous heights and carefully measured rhythms." }
+    ],
+    "timelineEyebrow": "Experience",
+    "timelineTitle": "A practice built slowly.",
+    "timeline": [
+      { "year": "2004", "title": "Graduated, ETSAB Barcelona", "text": "Master in Architecture, with a thesis on Levantine courtyard houses." },
+      { "year": "2005", "title": "Architect, Lisbon", "text": "Housing and restoration projects in Lisbon's historic centre." },
+      { "year": "2009", "title": "Associate, Paris", "text": "Cultural buildings and private residences across France." },
+      { "year": "2012", "title": "Atelier Nour founded", "text": "Studio opened in Gemmayzeh, Beirut, with a first residential commission in Byblos." },
+      { "year": "2018", "title": "Interiors & landscape", "text": "The studio expands into interior design and landscape architecture." },
+      { "year": "2023", "title": "Regional award", "text": "Cedar Ridge House shortlisted for a regional residential architecture prize (fictional)." }
+    ],
+    "servicesEyebrow": "Services",
+    "servicesTitle": "From the first sketch to the last detail.",
+    "services": [
+      { "title": "Architecture", "text": "New houses, extensions and small public buildings, from feasibility to site supervision." },
+      { "title": "Interior design", "text": "Complete interiors, custom joinery and furniture designed with local craftsmen." },
+      { "title": "Landscape", "text": "Gardens, terraces and courtyards with native, low-water planting." },
+      { "title": "Restoration", "text": "Careful renovation of historic Lebanese houses and apartments." }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "eyebrow": "Get in touch",
+    "lead": "Tell us about your site, your house or your room. We reply to every message within two working days.",
+    "form": {
+      "name": "Full name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "message": "Your project",
+      "messagePlaceholder": "Location, scope, timing…",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "required": "Required",
+      "demoNote": "Demo form — no message is actually sent."
+    },
+    "errors": {
+      "name": "Please enter your name.",
+      "email": "Please enter a valid email address.",
+      "phone": "Please enter a valid phone number.",
+      "message": "Please tell us a little about your project (at least 20 characters).",
+      "summary": "Please check the highlighted fields."
+    },
+    "success": {
+      "title": "Thank you, {name}.",
+      "text": "Your message has been received. We’ll be in touch within two working days.",
+      "again": "Send another message"
+    },
+    "studio": "Studio",
+    "email": "Email",
+    "phone": "Phone",
+    "hours": "Mon – Fri, 9:00 – 18:00",
+    "whatsapp": "WhatsApp",
+    "call": "Call the studio",
+    "social": "Follow the studio"
+  },
+  "credits": {
+    "title": "Credits",
+    "lead": "All photographs on this demo site come from Unsplash and are used under the Unsplash License. Thank you to the photographers below.",
+    "pending": "Photographer credits will be listed here once the final images are selected.",
+    "license": "Unsplash License",
+    "disclaimer": "Atelier Nour, its founder and its projects are fictional. The images (photographs and a few architectural renders) show places and designs unrelated to this studio."
+  },
+  "error": {
+    "notFound": "This page could not be found.",
+    "generic": "Something went wrong.",
+    "home": "Back to home"
+  }
+}
